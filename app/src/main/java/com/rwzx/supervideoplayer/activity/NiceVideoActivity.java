@@ -44,14 +44,11 @@ public class NiceVideoActivity extends AppCompatActivity {
 
         mNiceVideoPlayer = (NiceVideoPlayer) findViewById(R.id.nice_video_player);
         mNiceVideoPlayer.setPlayerType(NiceVideoPlayer.TYPE_IJK);
-//        mNiceVideoPlayer.setUp("rtsp://115.238.93.194:9090/dss/monitor/param?cameraid=1000034%242&substream=1", null);
-//        mNiceVideoPlayer.setUp("http://118.31.45.21:8180/ShangRaoShi/publish/media/351320555cd6ca42f9cc5bf6cb5644cc.mp4", null);
-//        mNiceVideoPlayer.setUp("http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8", null);
-//        mNiceVideoPlayer.setUp("http://192.168.99.107:80/hls1/hls1.m3u8", null);
+        mNiceVideoPlayer.setUp("http://play.g3proxy.lecloud.com/vod/v2/MjUxLzE2LzgvbGV0di11dHMvMTQvdmVyXzAwXzIyLTExMDc2NDEzODctYXZjLTE5OTgxOS1hYWMtNDgwMDAtNTI2MTEwLTE3MDg3NjEzLWY1OGY2YzM1NjkwZTA2ZGFmYjg2MTVlYzc5MjEyZjU4LTE0OTg1NTc2ODY4MjMubXA0?b=259&mmsid=65565355&tm=1499247143&key=f0eadb4f30c404d49ff8ebad673d3742&platid=3&splatid=345&playid=0&tss=no&vtype=21&cvid=2026135183914&payff=0&pip=08cc52f8b09acd3eff8bf31688ddeced&format=0&sign=mb&dname=mobile&expect=1&tag=mobile&xformat=super", null);
         TxVideoPlayerController controller = new TxVideoPlayerController(this);
         controller.setTitle("态度决定一切，细节决定成败，态度决定一切，细节决定成败！");
 //        controller.isLive(true);
-        controller.setClarity(getClarites(), 0);
+//        controller.setClarity(getClarites(), 0);
 //        Glide.with(this).load("http://imgsrc.baidu.com/123.jpg").into(controller.imageView());
         mNiceVideoPlayer.setController(controller);
     }
