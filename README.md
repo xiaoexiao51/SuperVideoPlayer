@@ -8,10 +8,8 @@
   ![](https://github.com/xiaoexiao51/SuperVideoPlayer/blob/master/screenshot/screenshot02.png)
     
 ### 使用步骤  
-  - 引入vitamio SDK的方式有两种：
-  - 直接以module的方式引入
-  - 通过Complie的方式引入
- 作者是采用的第一种方式，下面是一些需要注意的地方：
+
+下面是一些需要注意的地方：
   - 清单文件配置：
 
 1）权限设置：
@@ -38,7 +36,7 @@
         mNiceVideoPlayer.setUp("http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8", null);
         TxVideoPlayerController controller = new TxVideoPlayerController(this);
         controller.setTitle("态度决定一切，细节决定成败，态度决定一切，细节决定成败！");
-//        controller.isLive(true);
+        controller.isLive(true);
 //        Glide.with(this).load("http://imgsrc.baidu.com/123.jpg").into(controller.imageView());
         mNiceVideoPlayer.setController(controller);
     }
