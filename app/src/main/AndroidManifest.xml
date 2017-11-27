@@ -15,18 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!--<activity
-              android:name=".activity.MainActivity"
-              android:configChanges="orientation|keyboardHidden|screenSize">
-              <intent-filter>
-                  <action android:name="android.intent.action.MAIN"/>
-
-                  <category android:name="android.intent.category.LAUNCHER"/>
-              </intent-filter>
-          </activity>-->
-
         <activity
-            android:name=".activity.NiceVideoActivity"
+            android:name=".activity.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -34,6 +24,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".activity.NiceVideoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+
+        <activity android:name=".activity.VideoListActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
 
     </application>
 

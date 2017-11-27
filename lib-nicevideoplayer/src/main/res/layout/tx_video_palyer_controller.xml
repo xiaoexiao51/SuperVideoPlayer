@@ -212,8 +212,8 @@
             android:id="@+id/battery_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="15dp"
             android:orientation="vertical"
+            android:padding="15dp"
             android:visibility="gone">
 
             <ImageView
@@ -280,7 +280,7 @@
             android:id="@+id/clarity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="15dp"
+            android:layout_marginLeft="15dp"
             android:text="高清"
             android:textColor="@android:color/white"
             android:textSize="15sp"

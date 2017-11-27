@@ -2,11 +2,9 @@ package com.rwzx.supervideoplayer.activity;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.TableLayout;
 
 import com.rwzx.richvideoplayer.media.AndroidMediaController;
@@ -26,12 +24,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        } else {
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        }
         initIjkVideoPlayer();
     }
 
@@ -72,5 +64,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void launchNiceVideo(View view) {
         startActivity(new Intent(this, NiceVideoActivity.class));
+    }
+
+    public void launchVideoList(View view) {
+        startActivity(new Intent(this, VideoListActivity.class));
     }
 }

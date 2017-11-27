@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.SurfaceTexture;
 import android.media.AudioManager;
 import android.net.Uri;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.Surface;
@@ -654,10 +655,10 @@ public class NiceVideoPlayer extends FrameLayout
 
         ViewGroup contentView = (ViewGroup) NiceUtil.scanForActivity(mContext)
                 .findViewById(android.R.id.content);
-        // 小窗口的宽度为屏幕宽度的60%，长宽比默认为16:9，右边距、下边距为8dp。
+        // 小窗口的宽度为屏幕宽度的40%，长宽比默认为4:3，右边距、下边距为8dp。
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
-                (int) (NiceUtil.getScreenWidth(mContext) * 0.6f),
-                (int) (NiceUtil.getScreenWidth(mContext) * 0.6f * 9f / 16f));
+                (int) (NiceUtil.getScreenWidth(mContext) * 0.4f),
+                (int) (NiceUtil.getScreenWidth(mContext) * 0.4f * 3f / 4f));
         params.gravity = Gravity.BOTTOM | Gravity.END;
         params.rightMargin = NiceUtil.dp2px(mContext, 8f);
         params.bottomMargin = NiceUtil.dp2px(mContext, 8f);
@@ -674,21 +675,27 @@ public class NiceVideoPlayer extends FrameLayout
      */
     @Override
     public boolean exitTinyWindow() {
-        if (mCurrentMode == MODE_TINY_WINDOW) {
-            ViewGroup contentView = (ViewGroup) NiceUtil.scanForActivity(mContext)
-                    .findViewById(android.R.id.content);
-            contentView.removeView(mContainer);
-            LayoutParams params = new LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            this.addView(mContainer, params);
+        if (mCurrentMode != MODE_TINY_WINDOW) return false;
 
-            mCurrentMode = MODE_NORMAL;
-            mController.onPlayModeChanged(mCurrentMode);
-            LogUtil.d("MODE_NORMAL");
-            return true;
-        }
-        return false;
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+
+                ViewGroup contentView = (ViewGroup) NiceUtil.scanForActivity(mContext)
+                        .findViewById(android.R.id.content);
+                contentView.removeView(mContainer);
+
+                LayoutParams params = new LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT);
+                NiceVideoPlayer.this.addView(mContainer, params);
+
+                mCurrentMode = MODE_NORMAL;
+                mController.onPlayModeChanged(mCurrentMode);
+                LogUtil.d("MODE_NORMAL");
+            }
+        });
+        return true;
     }
 
     @Override

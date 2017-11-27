@@ -2,6 +2,7 @@ package com.rwzx.supervideoplayer.activity;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import com.rwzx.supervideoplayer.R;
 import com.xiao.nicevideoplayer.Clarity;
 import com.xiao.nicevideoplayer.MeasureHelper;
+import com.xiao.nicevideoplayer.NiceUtil;
 import com.xiao.nicevideoplayer.NiceVideoPlayer;
 import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
 import com.xiao.nicevideoplayer.TxVideoPlayerController;
@@ -38,6 +40,21 @@ public class NiceVideoActivity extends AppCompatActivity {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         initNiceVideoPlayer();
+
+        NestedScrollView scrollView = (NestedScrollView) findViewById(R.id.scroll_view);
+
+        scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (scrollY <= 0) {
+
+                } else if (scrollY > 0 && scrollY <= NiceUtil.dp2px(NiceVideoActivity.this, 300)) {
+                    mNiceVideoPlayer.exitTinyWindow();
+                } else {
+                    mNiceVideoPlayer.enterTinyWindow();
+                }
+            }
+        });
     }
 
     private void initNiceVideoPlayer() {
@@ -110,5 +127,13 @@ public class NiceVideoActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (NiceVideoPlayerManager.instance().onBackPressd()) return;
         super.onBackPressed();
+    }
+
+    public void enterTinyWindow(View view) {
+        if (mNiceVideoPlayer.isIdle()) {
+            Toast.makeText(this, "要点击播放后才能进入小窗口", Toast.LENGTH_SHORT).show();
+        } else {
+            mNiceVideoPlayer.enterTinyWindow();
+        }
     }
 }

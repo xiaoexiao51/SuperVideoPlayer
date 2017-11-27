@@ -6,10 +6,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="原生Ijkplayer"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"/>
+
     <com.rwzx.richvideoplayer.media.IjkVideoView
         android:id="@+id/video_view"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         android:background="@android:color/black"/>
 
     <View
@@ -36,5 +45,11 @@
         android:layout_height="wrap_content"
         android:onClick="launchNiceVideo"
         android:text="启动 Nice Video Player"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="launchVideoList"
+        android:text="启动 Nice Video List"/>
 
 </LinearLayout>

@@ -270,8 +270,8 @@ public class TxVideoPlayerController
         switch (playMode) {
             case NiceVideoPlayer.MODE_NORMAL:
 //                mBack.setVisibility(View.GONE);
+                this.setVisibility(View.VISIBLE);
                 mFullScreen.setImageResource(R.drawable.ic_player_enlarge);
-                mFullScreen.setVisibility(View.VISIBLE);
                 mClarity.setVisibility(View.GONE);
                 mBatteryTime.setVisibility(View.GONE);
                 mScreenShot.setVisibility(View.GONE);
@@ -282,7 +282,6 @@ public class TxVideoPlayerController
                 break;
             case NiceVideoPlayer.MODE_FULL_SCREEN:
 //                mBack.setVisibility(View.VISIBLE);
-                mFullScreen.setVisibility(View.GONE);
                 mFullScreen.setImageResource(R.drawable.ic_player_shrink);
                 if (clarities != null && clarities.size() > 1) {
                     mClarity.setVisibility(View.VISIBLE);
@@ -297,7 +296,7 @@ public class TxVideoPlayerController
                 break;
             case NiceVideoPlayer.MODE_TINY_WINDOW:
 //                mBack.setVisibility(View.VISIBLE);
-                mClarity.setVisibility(View.GONE);
+                this.setVisibility(View.INVISIBLE);
                 break;
         }
     }
