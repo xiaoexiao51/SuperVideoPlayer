@@ -6,6 +6,8 @@
   ![](https://github.com/xiaoexiao51/SuperVideoPlayer/blob/master/screenshot/screenshot01.png)
 
   ![](https://github.com/xiaoexiao51/SuperVideoPlayer/blob/master/screenshot/screenshot02.png)
+  
+  ![](https://github.com/xiaoexiao51/SuperVideoPlayer/blob/master/screenshot/screenshot03.png)
     
 ### 使用步骤  
 
@@ -33,15 +35,14 @@
 
         mNiceVideoPlayer = (NiceVideoPlayer) findViewById(R.id.nice_video_player);
         mNiceVideoPlayer.setPlayerType(NiceVideoPlayer.TYPE_IJK);
-        mNiceVideoPlayer.setUp("http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8", null);
         TxVideoPlayerController controller = new TxVideoPlayerController(this);
         controller.setTitle("态度决定一切，细节决定成败，态度决定一切，细节决定成败！");
-        controller.isLive(true);
+        controller.isLive(false);
 //        Glide.with(this).load("http://imgsrc.baidu.com/123.jpg").into(controller.imageView());
         mNiceVideoPlayer.setController(controller);
     }
-    
-     @Override
+
+    @Override
     protected void onResume() {
         super.onResume();
         NiceVideoPlayerManager.instance().resumeNiceVideoPlayer();
