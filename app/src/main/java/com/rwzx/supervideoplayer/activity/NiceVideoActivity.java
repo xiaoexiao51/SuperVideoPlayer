@@ -1,11 +1,9 @@
 package com.rwzx.supervideoplayer.activity;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,12 +31,12 @@ public class NiceVideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nice_video_player);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        } else {
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//        } else {
+//            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        }
         initNiceVideoPlayer();
 
         NestedScrollView scrollView = (NestedScrollView) findViewById(R.id.scroll_view);
@@ -61,6 +59,10 @@ public class NiceVideoActivity extends AppCompatActivity {
 
         mNiceVideoPlayer = (NiceVideoPlayer) findViewById(R.id.nice_video_player);
         mNiceVideoPlayer.setPlayerType(NiceVideoPlayer.TYPE_IJK);
+//        mNiceVideoPlayer.setUp("rtsp://115.238.93.194:9090/dss/monitor/param?cameraid=1000034%242&substream=1", null);
+//        mNiceVideoPlayer.setUp("http://118.31.45.21:8180/ShangRaoShi/publish/media/351320555cd6ca42f9cc5bf6cb5644cc.mp4", null);
+//        mNiceVideoPlayer.setUp("http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8", null);
+//        mNiceVideoPlayer.setUp("http://192.168.99.107:80/hls1/hls1.m3u8", null);
         TxVideoPlayerController controller = new TxVideoPlayerController(this);
         controller.setTitle("态度决定一切，细节决定成败，态度决定一切，细节决定成败！");
         controller.isLive(false);

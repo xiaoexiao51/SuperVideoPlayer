@@ -7,6 +7,6 @@
     <com.xiao.nicevideoplayer.NiceVideoPlayer
         android:id="@+id/video_view"
         android:layout_width="match_parent"
-        android:layout_height="300dp"/>
+        android:layout_height="220dp"/>
 
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.rwzx.supervideoplayer.activity;
 
+import com.bumptech.glide.Glide;
 import com.rwzx.supervideoplayer.R;
 import com.rwzx.supervideoplayer.base.BaseRecyclerAdapter;
 import com.rwzx.supervideoplayer.base.BaseViewHolder;
@@ -32,7 +33,7 @@ public class VideoListAdapter extends BaseRecyclerAdapter<Clarity> {
         TxVideoPlayerController controller = new TxVideoPlayerController(mContext);
         controller.setTitle(item.grade);
         controller.isLive(false);
-//        Glide.with(this).load("http://imgsrc.baidu.com/123.jpg").into(controller.imageView());
+        Glide.with(mContext).load(R.drawable.ic_video_image).into(controller.imageView());
         videoPlayer.setController(controller);
     }
 }

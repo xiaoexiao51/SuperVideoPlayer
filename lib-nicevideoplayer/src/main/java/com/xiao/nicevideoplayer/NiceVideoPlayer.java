@@ -12,6 +12,7 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.Surface;
 import android.view.TextureView;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
@@ -124,6 +125,15 @@ public class NiceVideoPlayer extends FrameLayout
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT);
         this.addView(mContainer, params);
+        // 小窗口点击进入全屏模式
+        mContainer.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mCurrentMode == MODE_TINY_WINDOW) {
+                    enterFullScreen();
+                }
+            }
+        });
     }
 
     public void setUp(String url, Map<String, String> headers) {
