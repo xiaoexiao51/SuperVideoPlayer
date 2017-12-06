@@ -59,10 +59,6 @@ public class NiceVideoActivity extends AppCompatActivity {
 
         mNiceVideoPlayer = (NiceVideoPlayer) findViewById(R.id.nice_video_player);
         mNiceVideoPlayer.setPlayerType(NiceVideoPlayer.TYPE_IJK);
-//        mNiceVideoPlayer.setUp("rtsp://115.238.93.194:9090/dss/monitor/param?cameraid=1000034%242&substream=1", null);
-//        mNiceVideoPlayer.setUp("http://118.31.45.21:8180/ShangRaoShi/publish/media/351320555cd6ca42f9cc5bf6cb5644cc.mp4", null);
-//        mNiceVideoPlayer.setUp("http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8", null);
-//        mNiceVideoPlayer.setUp("http://192.168.99.107:80/hls1/hls1.m3u8", null);
         TxVideoPlayerController controller = new TxVideoPlayerController(this);
         controller.setTitle("态度决定一切，细节决定成败，态度决定一切，细节决定成败！");
         controller.isLive(false);
