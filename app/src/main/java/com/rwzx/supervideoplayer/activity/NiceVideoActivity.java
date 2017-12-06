@@ -60,7 +60,7 @@ public class NiceVideoActivity extends AppCompatActivity {
         mNiceVideoPlayer = (NiceVideoPlayer) findViewById(R.id.nice_video_player);
         mNiceVideoPlayer.setPlayerType(NiceVideoPlayer.TYPE_IJK);
         TxVideoPlayerController controller = new TxVideoPlayerController(this);
-        controller.setTitle("态度决定一切，细节决定成败，态度决定一切，细节决定成败！");
+        controller.setTitle("态度决定一切，细节决定成败！态度决定一切，细节决定成败！");
         controller.isLive(false);
         controller.setClarity(getClarites(), 0);
 //        Glide.with(this).load("http://imgsrc.baidu.com/123.jpg").into(controller.imageView());
