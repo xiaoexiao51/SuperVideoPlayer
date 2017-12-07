@@ -24,22 +24,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        IjkMediaPlayer.loadLibrariesOnce(null);
+        IjkMediaPlayer.native_profileBegin("libijkplayer.so");
+
         initIjkVideoPlayer();
     }
 
     private void initIjkVideoPlayer() {
 
-//        IjkMediaPlayer.loadLibrariesOnce(null);
-//        IjkMediaPlayer.native_profileBegin("libijkplayer.so");
-
         mVideoView = (IjkVideoView) findViewById(R.id.video_view);
-        TableLayout tableLayout = (TableLayout) findViewById(R.id.table_view);
         AndroidMediaController controller = new AndroidMediaController(this, true);
         mVideoView.setMediaController(controller);
-        mVideoView.setHudView(tableLayout);
+        mVideoView.setHudView((TableLayout) findViewById(R.id.table_view));
         mVideoView.setAspectRatio(IRenderView.AR_16_9_FIT_PARENT);
 //        mVideoView.setVideoPath(mVideoPath);
-        mVideoView.setVideoURI(Uri.parse("http://118.31.45.21:8180/ShangRaoShi/publish/media/351320555cd6ca42f9cc5bf6cb5644cc.mp4"));
+        mVideoView.setVideoURI(Uri.parse("http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8"));
         mVideoView.start();
     }
 
@@ -62,10 +61,12 @@ public class MainActivity extends AppCompatActivity {
         IjkMediaPlayer.native_profileEnd();
     }
 
+    // 跳转视频播放
     public void launchNiceVideo(View view) {
         startActivity(new Intent(this, NiceVideoActivity.class));
     }
 
+    // 跳转视频列表
     public void launchVideoList(View view) {
         startActivity(new Intent(this, VideoListActivity.class));
     }
