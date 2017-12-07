@@ -8,12 +8,12 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="48dp"
         android:background="@color/colorPrimary"
         android:gravity="center"
-        android:text="原生Ijkplayer"
+        android:text="视频测试"
         android:textColor="@android:color/white"
-        android:textSize="20sp"/>
+        android:textSize="18sp"/>
 
     <com.rwzx.richvideoplayer.media.IjkVideoView
         android:id="@+id/video_view"
@@ -21,10 +21,17 @@
         android:layout_height="200dp"
         android:background="@android:color/black"/>
 
-    <View
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="#0099FF"/>
+        android:layout_height="wrap_content"
+        android:onClick="launchNiceVideo"
+        android:text="视频播放"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="launchVideoList"
+        android:text="视频列表"/>
 
     <TableLayout
         android:id="@+id/table_view"
@@ -34,22 +41,5 @@
         android:minHeight="50dp"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="#0099FF"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="launchNiceVideo"
-        android:text="启动 Nice Video Player"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="launchVideoList"
-        android:text="启动 Nice Video List"/>
 
 </LinearLayout>
