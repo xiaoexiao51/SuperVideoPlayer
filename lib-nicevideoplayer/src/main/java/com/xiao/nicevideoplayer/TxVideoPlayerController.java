@@ -10,6 +10,7 @@ import android.os.CountDownTimer;
 import android.support.annotation.DrawableRes;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -39,18 +40,21 @@ public class TxVideoPlayerController
 
     private LinearLayout mTop;
     private ImageView mBack;
+    private FrameLayout mFlBack;
     private TextView mTitle;
     private LinearLayout mBatteryTime;
     private ImageView mBattery;
     private TextView mTime;
 
     private LinearLayout mBottom;
-    private ImageView mRestartPause;
+    private ImageView mPause;
+    private FrameLayout mFlPause;
     private TextView mPosition;
     private TextView mDuration;
     private SeekBar mSeek;
     private TextView mClarity;
     private ImageView mFullScreen;
+    private FrameLayout mFlFullScreen;
 
     private TextView mLength;
 
@@ -99,17 +103,20 @@ public class TxVideoPlayerController
 
         mTop = (LinearLayout) findViewById(R.id.top);
         mBack = (ImageView) findViewById(R.id.back);
+        mFlBack = (FrameLayout) findViewById(R.id.fl_back);
         mTitle = (TextView) findViewById(R.id.title);
         mBatteryTime = (LinearLayout) findViewById(R.id.battery_time);
         mBattery = (ImageView) findViewById(R.id.battery);
         mTime = (TextView) findViewById(R.id.time);
 
         mBottom = (LinearLayout) findViewById(R.id.bottom);
-        mRestartPause = (ImageView) findViewById(R.id.restart_or_pause);
+        mPause = (ImageView) findViewById(R.id.pause);
+        mFlPause = (FrameLayout) findViewById(R.id.fl_pause);
         mPosition = (TextView) findViewById(R.id.position);
         mDuration = (TextView) findViewById(R.id.duration);
         mSeek = (SeekBar) findViewById(R.id.seek);
         mFullScreen = (ImageView) findViewById(R.id.full_screen);
+        mFlFullScreen = (FrameLayout) findViewById(R.id.fl_full_screen);
         mClarity = (TextView) findViewById(R.id.clarity);
         mLength = (TextView) findViewById(R.id.length);
 
@@ -136,9 +143,9 @@ public class TxVideoPlayerController
         mScreenShot = (ImageView) findViewById(R.id.screen_shot);
 
         mCenterStart.setOnClickListener(this);
-        mBack.setOnClickListener(this);
-        mRestartPause.setOnClickListener(this);
-        mFullScreen.setOnClickListener(this);
+        mFlBack.setOnClickListener(this);
+        mFlPause.setOnClickListener(this);
+        mFlFullScreen.setOnClickListener(this);
         mClarity.setOnClickListener(this);
         mRetry.setOnClickListener(this);
         mReplay.setOnClickListener(this);
@@ -230,23 +237,23 @@ public class TxVideoPlayerController
                 break;
             case NiceVideoPlayer.STATE_PLAYING:
                 mLoading.setVisibility(View.GONE);
-                mRestartPause.setImageResource(R.drawable.ic_player_pause);
+                mPause.setImageResource(R.drawable.ic_player_pause);
                 startDismissTopBottomTimer();
                 break;
             case NiceVideoPlayer.STATE_PAUSED:
                 mLoading.setVisibility(View.GONE);
-                mRestartPause.setImageResource(R.drawable.ic_player_start);
+                mPause.setImageResource(R.drawable.ic_player_start);
                 cancelDismissTopBottomTimer();
                 break;
             case NiceVideoPlayer.STATE_BUFFERING_PLAYING:
                 mLoading.setVisibility(View.VISIBLE);
-                mRestartPause.setImageResource(R.drawable.ic_player_pause);
+                mPause.setImageResource(R.drawable.ic_player_pause);
                 mLoadText.setText("正在缓冲...");
                 startDismissTopBottomTimer();
                 break;
             case NiceVideoPlayer.STATE_BUFFERING_PAUSED:
                 mLoading.setVisibility(View.VISIBLE);
-                mRestartPause.setImageResource(R.drawable.ic_player_start);
+                mPause.setImageResource(R.drawable.ic_player_start);
                 mLoadText.setText("正在缓冲...");
                 cancelDismissTopBottomTimer();
                 break;
@@ -368,7 +375,7 @@ public class TxVideoPlayerController
             if (mNiceVideoPlayer.isIdle()) {
                 mNiceVideoPlayer.start();
             }
-        } else if (v == mBack) {
+        } else if (v == mFlBack) {
             if (mNiceVideoPlayer.isFullScreen()) {// 全屏时退出全屏
                 mNiceVideoPlayer.exitFullScreen();
             } else if (mNiceVideoPlayer.isTinyWindow()) {// 小窗口播放
@@ -376,13 +383,13 @@ public class TxVideoPlayerController
             } else {// 竖屏时退出页面
                 NiceUtil.scanForActivity(mContext).onBackPressed();
             }
-        } else if (v == mRestartPause) {
+        } else if (v == mFlPause) {
             if (mNiceVideoPlayer.isPlaying() || mNiceVideoPlayer.isBufferingPlaying()) {
                 mNiceVideoPlayer.pause();
             } else if (mNiceVideoPlayer.isPaused() || mNiceVideoPlayer.isBufferingPaused()) {
                 mNiceVideoPlayer.restart();
             }
-        } else if (v == mFullScreen) {
+        } else if (v == mFlFullScreen) {
             if (mNiceVideoPlayer.isNormal() || mNiceVideoPlayer.isTinyWindow()) {
                 mNiceVideoPlayer.enterFullScreen();
             } else if (mNiceVideoPlayer.isFullScreen()) {
